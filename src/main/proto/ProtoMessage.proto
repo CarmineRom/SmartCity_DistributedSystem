@@ -1,0 +1,55 @@
+syntax = "proto3";
+
+option java_outer_classname = "ProtoMessage";
+option java_package = "protosPackage";
+
+message Empty{
+
+}
+
+message NodeInfo{
+
+	string nodeId = 1;
+	string ip = 2;
+	int32 nodePort =3;
+	int32 sensorPort = 4;
+	int32 posX = 5;
+	int32 posY = 6;
+}
+
+message NodesList{
+
+	repeated NodeInfo nodes = 1;
+}
+
+message Measurement{
+
+	int32 type = 1;
+	string id = 2;
+	int64 timestamp = 3;
+	double value = 4;
+}
+
+message StatsMessage{
+
+	double average = 1;
+	double deviation = 2;
+	StatList localStats= 3;
+	MeasList globalStats = 4;
+
+	message StatList{
+
+		repeated NodeStatistics statistics = 1;
+	}
+
+	message MeasList{
+
+		repeated Measurement measurements = 1;
+	}
+
+	message NodeStatistics{
+
+		string id = 1;
+		MeasList measList= 2;
+	}
+}

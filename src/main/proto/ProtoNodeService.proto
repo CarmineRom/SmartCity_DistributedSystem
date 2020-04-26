@@ -1,0 +1,40 @@
+syntax="proto3";
+
+import "ProtoMessage.proto"; //IMPORT DA PROTOMESSAGE.PROTO MEASUREMENT/ MEAS LIST ?
+
+option java_package = "protosPackage";
+
+service NodeService {
+
+    rpc sendStatistic(Measurement) returns (Measurement); //USATO DA NODI
+
+    rpc hello(HelloRequest) returns (Response);
+
+    rpc election (Request) returns (Empty);
+
+    rpc newCoordinator (Request) returns (Empty);
+
+}
+
+message Response{
+    //stat
+    //-1: IN ENTRATA --> Conoscenza parziale della rete
+    //0 : IN ELEZIONE
+    //2 : SONO COORDINATORE --> id non vuoto
+
+    int32 state = 1;
+    string id = 2;
+
+}
+message Request{
+
+    string id = 1;
+}
+
+message HelloRequest{
+
+    string id=1;
+    string Ip=2;
+    int32 port=3;
+
+}

@@ -1,0 +1,10 @@
+syntax="proto3";
+
+import "ProtoMessage.proto"; //IMPORT DA PROTOMESSAGE.PROTO MEASUREMENT/ MEAS LIST ?
+
+option java_package = "protosPackage";
+
+service SensorService{
+
+    rpc sendMeasurement(Measurement) returns (Empty); //USATO DA SENSORI
+}
