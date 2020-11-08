@@ -11,7 +11,6 @@ public class PM10Simulator extends Simulator {
         super(id, "PM10", stream);
     }
 
-    //use this constructor to initialize the pm10's simulator in your project
     public PM10Simulator(SensorStream stream){
         this("pm10-"+(ID++), stream);
     }
